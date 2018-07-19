@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>尺码收集</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="/static/css/sm.min.css">
+	</head>
+	<body>
+		<div class="page">
+			<header class="bar bar-nav">
+				<h1 class='title'>新生服装尺码收集</h1>
+			</header>
+			<div class="content">
+			  	<div class="list-block">
+				    <ul>
+				      	<li>
+				        	<div class="item-content">
+					          	<div class="item-inner">
+					            	<div class="item-title label">姓名</div>
+					            	<div class="item-input">
+					              		<input type="text" placeholder="输入你的名字" id="sName">
+					            	</div>
+					          	</div>
+					        </div>
+					    </li>
+					    <li>
+					        <div class="item-content">
+					          	<div class="item-inner">
+					            	<div class="item-title label" >学号</div>
+					            	<div class="item-input">
+					              		<input type="text" placeholder="输入你的学号" id="sNo">
+					            	</div>
+					          	</div>
+					        </div>
+					    </li>
+					    <li>
+					        <div class="item-content">
+					          	<div class="item-inner">
+						            <div class="item-title label">学院</div>
+						            <div class="item-input">
+						            	<select id="sDepartment">
+						              		<option value ="0">请选择</option>
+											<option value ="1">政法学院、</option>
+											<option value="165">165</option>
+											<option value="160">160</option>
+						            	</select>
+						            </div>
+					          	</div>
+					        </div>
+					    </li>
+					    <li>
+					        <div class="item-content">
+					          	<div class="item-inner">
+					            	<div class="item-title label">班级</div>
+					            	<div class="item-input">
+					              		<input type="text" placeholder="输入所属班级" id="sClass">
+					            	</div>
+					          	</div>
+					        </div>
+					    </li>
+					    <li>
+					        <div class="item-content">
+					          	<div class="item-inner">
+					            	<div class="item-title label">服装尺寸</div>
+					            	<div class="item-input">
+					              		<select id="sSize">
+							              	<option value ="0">请选择</option>
+											<option value ="170">170</option>
+											<option value="165">165</option>
+											<option value="160">160</option>
+					            		</select>
+					            	</div>
+					          	</div>
+					        </div>
+					    </li>  	
+				    </ul>
+				</div>
+
+	            <div class="content-block" >
+	            	<p style="color:red;">*尺码偏大，一般尺码为当前身高向下取整，如：高173的学生可以选择170的尺寸。</p>
+	            	<p><small> 如输入有误，再次提交即可。 </small></p>
+	            </div>
+			  
+				<div class="content-block">
+			  		<p><a class="button button-big button-fill button-success" id="submit"> 点击提交	</a></p>	
+				</div>
+				<div class="content-padded">
+					<p style="text-align: center"> <small>易班学生工作站提供技术支持</small></p>
+				</div>
+			</div>		
+		</div>
+		<script type='text/javascript' src='/static/js/zepto.min.js' charset='utf-8'></script>
+		<script type="text/javascript" src='/static/js/sm.min.js' charset="utf-8"></script>
+		<script type="text/javascript" src='/static/js/index.js'></script>
+	</body>
+</html>	

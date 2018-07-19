@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CollectSize_System:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Yiban.war">
+      <element id="artifact" artifact-name="CollectSize_System:war exploded" />
+    </root>
+  </artifact>
+</component>

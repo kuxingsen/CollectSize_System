@@ -11,19 +11,23 @@
         <result column="name" property="name"/>
         <result column="department" property="department"/>
         <result column="class_name" property="class_name"/>
-        <result column="size" property="size"/>
+        <result column="size" property="ssize"/>
     </resultMap>
     <!--查询学生所有信息-->
     <select id="select" resultMap="student">
-        SELECT * FROM student a WHERE a.student_id = #{id}
+        SELECT * FROM student a WHERE a.yiban_id = #{id}
     </select>
     <!--把学生的个人信息插入到数据库-->
     <insert id="insert" parameterType="student">
-        INSERT  INTO student VALUES (#{student_id},#{name},#{department},#{class_name},#{yiban_id},#{size})
+        INSERT  INTO student VALUES (#{student_id},#{name},#{department},#{class_name},#{yiban_id},#{ssize})
     </insert>
     <!--更新学生信息-->
     <update id="updateStudentBaseInfo" parameterType="student">
-        UPDATE student s SET s.class_name=#{className},s.department=#{department} WHERE  s.student_id =#{studentId}
+        UPDATE student s SET s.student_id=#{student_id},s.name=#{name},s.department=#{department},s.class_name=#{class_name},s.size=#{ssize} WHERE  s.yiban_id =#{yiban_id}
     </update>
 
+    <!--查询所有学生信息List<Student> selectAll();-->
+    <select id="selectAll" resultMap="student">
+        SELECT * FROM student
+    </select>
 </mapper>

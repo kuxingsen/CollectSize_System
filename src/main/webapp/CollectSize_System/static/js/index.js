@@ -10,11 +10,11 @@ $(document).ready(function(){
         success: function(resp){
             if(resp.code == 0) {
                 //正常返回，已经提交过了
-                $('#sName').val(resp.rows[0].name);
-                $('#sNo').val(resp.rows[0].student_id);
-                $('#sDepartment').val(resp.rows[0].department);
-                $('#sClass').val(resp.rows[0].class_name);
-                $('sSize').val(resp.rows[0].size);
+                $('#sName').val(resp.rows.name);
+                $('#sNo').val(resp.rows.student_id);
+                $('#sDepartment').val(resp.rows.department);
+                $('#sClass').val(resp.rows.class_name);
+                $('#sSize').val(resp.rows.ssize);
             } else {
                 //第一次登系统，没提交过不处理
             }
@@ -29,7 +29,7 @@ $('#submit').click(function(){
 	var sClass = $('#sClass').val();
 	var sSize = $('#sSize').val();
 	//验证表单不空
-	if(!(sName&&sNo&&sClass) || sDepartment==0 || sSize==0) {
+	if(!(sName&&sNo&&sClass) || sDepartment==-1 || sSize==-1) {
 		$.alert("表单内容不能为空");	
 	} else {
 		$.showPreloader('正在上传表单');
@@ -41,7 +41,7 @@ $('#submit').click(function(){
 				student_id: sNo,
                 department: sDepartment,
 				class_name: sClass,
-				size: sSize
+				ssize: sSize
 			},
 			dataType: "json",
 			success: function(resp) {
@@ -54,7 +54,7 @@ $('#submit').click(function(){
 			},
 			error: function(xhr, type){
 				$.hidePreloader();
-			    $.alert('提交表单失败!请检查网络设置')
+			    $.alert('提交表单失败!')
 			}
 		})
 	}

@@ -1,5 +1,7 @@
 package com.yiban.entity;
 
+import java.io.Serializable;
+
 /**
  * <p>Title:学生的javabean </p>
  * <p>Description: </p>
@@ -7,28 +9,29 @@ package com.yiban.entity;
  * @author 郑达成
  * @date 2018/7/15 12:32
  */
-public class Student {
+public class Student implements Serializable{
 
+    private static final long serialVersionUID = 3210359254553565348L;
     //    学生的服装尺码
-    private int size;
+    private int ssize;
     //    学生学号
     private String student_id;
     //    学生姓名
     private String name;
     //    学院
-    private String department;
+    private int department;
     //    学生对应的班级
     private String class_name;
     //    学生对应的易班id
     private String yiban_id;
 
 
-    public int getSize() {
-        return size;
+    public int getSsize() {
+        return ssize;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setSsize(int ssize) {
+        this.ssize = ssize;
     }
 
     public String getStudent_id() {
@@ -47,11 +50,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
 

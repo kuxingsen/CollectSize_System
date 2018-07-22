@@ -12,7 +12,7 @@ public class Result<T> {
     //成功状态码
     private int code;
     //数据对象
-    private T data;
+    private T rows;
 
 
     public Result(Dictionary dictionary) {
@@ -21,11 +21,11 @@ public class Result<T> {
         this.code=dictionary.getCode();
     }
 
-    public Result(Dictionary dictionary, T data) {
+    public Result(Dictionary dictionary, T rows) {
         this.success = dictionary.isSuccess();
         this.msg = dictionary.getStateInfo();
         this.code=dictionary.getCode();
-        this.data = data;
+        this.rows = rows;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Result<T> {
                 "success='" + success + '\'' +
                 ", msg='" + msg + '\'' +
                 ", code='" + code + '\'' +
-                ", data='" + data + '\'' +
+                ", rows='" + rows + '\'' +
                 '}';
     }
 
@@ -46,12 +46,12 @@ public class Result<T> {
         this.code = code;
     }
 
-    public T getData() {
-        return data;
+    public T getRows() {
+        return rows;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setRows(T rows) {
+        this.rows = rows;
     }
 
     public boolean isSuccess() {

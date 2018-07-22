@@ -3,7 +3,6 @@ package com.yiban.service.student;
 import com.yiban.entity.Dictionary;
 import com.yiban.entity.Result;
 import com.yiban.entity.Student;
-import com.yiban.mapper.studentMapper;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.slf4j.Logger;
@@ -14,26 +13,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * <p>Title: SERVICE</p>
- * <p>Description: å¤„ç†å­¦ç”Ÿä¿¡æ¯çš„serviceç±»</p>
+ * <p>Description: ´¦ÀíÑ§ÉúĞÅÏ¢µÄserviceÀà</p>
  *
- * @author éƒ‘è¾¾æˆ
+ * @author Ö£´ï³É
  * @date 2018/7/16 9:22
  */
 @Service
 public class informationHandler {
     @Autowired
-    private studentMapper studentMapper;
-    //åˆ›å»ºæ­¤ç±»çš„logger
+    private com.yiban.mapper.studentMapper studentMapper;
+    //´´½¨´ËÀàµÄlogger
     private Logger logger = LoggerFactory.getLogger(informationHandler.class);
 
     /**
      * @param id
-     * @return å­¦ç”Ÿä¸ªäººæ‰€æœ‰çš„ä¿¡æ¯
+     * @return Ñ§Éú¸öÈËËùÓĞµÄĞÅÏ¢
      */
     public Student select(String id) {
         return studentMapper.select(id);
@@ -42,7 +40,7 @@ public class informationHandler {
     /**
      *
      * @param size
-     * @return è½¬æ¢è¡£æœå°ºç 
+     * @return ×ª»»ÒÂ·ş³ßÂë
      */
     public String switchSize(int size) {
         switch (size) {
@@ -59,63 +57,63 @@ public class informationHandler {
             case 5:
                 return "XXXL";
             default:
-                return "æœªé€‰æ‹©";
+                return "Î´Ñ¡Ôñ";
         }
     }
 
     /**
      *
      * @param department
-     * @return è½¬æ¢å­¦é™¢åç§°
+     * @return ×ª»»Ñ§ÔºÃû³Æ
      */
     public String switchDeparment(int department){
         switch (department) {
             case 0:
-                return "ç»æµä¸ç®¡ç†å­¦é™¢";
+                return "¾­¼ÃÓë¹ÜÀíÑ§Ôº";
             case 1:
-                return "æ”¿æ³•å­¦é™¢ã€çŸ¥è¯†äº§æƒå­¦é™¢";
+                return "Õş·¨Ñ§Ôº¡¢ÖªÊ¶²úÈ¨Ñ§Ôº";
             case 2:
-                return "æ•™è‚²ç§‘å­¦å­¦é™¢";
+                return "½ÌÓı¿ÆÑ§Ñ§Ôº";
             case 3:
-                return "ä½“è‚²ä¸å¥åº·å­¦é™¢";
+                return "ÌåÓıÓë½¡¿µÑ§Ôº";
             case 4:
-                return "æ–‡å­¦é™¢";
+                return "ÎÄÑ§Ôº";
             case 5:
-                return "å¤–å›½è¯­å­¦é™¢";
+                return "Íâ¹úÓïÑ§Ôº";
             case 6:
-                return "æ•°å­¦ä¸ç»Ÿè®¡å­¦é™¢";
+                return "ÊıÑ§ÓëÍ³¼ÆÑ§Ôº";
             case 7:
-                return "ç”Ÿå‘½ç§‘å­¦å­¦é™¢";
+                return "ÉúÃü¿ÆÑ§Ñ§Ôº";
             case 8:
-                return "æœºæ¢°ä¸æ±½è½¦å·¥ç¨‹å­¦é™¢";
+                return "»úĞµÓëÆû³µ¹¤³ÌÑ§Ôº";
             case 9:
-                return "ç”µå­ä¸ç”µæ°”å·¥ç¨‹å­¦é™¢";
+                return "µç×ÓÓëµçÆø¹¤³ÌÑ§Ôº";
             case 10:
-                return "è®¡ç®—æœºç§‘å­¦ä¸è½¯ä»¶å­¦é™¢ã€å¤§æ•°æ®å­¦é™¢";
+                return "¼ÆËã»ú¿ÆÑ§ÓëÈí¼şÑ§Ôº¡¢´óÊı¾İÑ§Ôº";
             case 11:
-                return "ç¯å¢ƒä¸åŒ–å­¦å·¥ç¨‹å­¦é™¢";
+                return "»·¾³Óë»¯Ñ§¹¤³ÌÑ§Ôº";
             case 12:
-                return "é£Ÿå“ä¸åˆ¶è¯å·¥ç¨‹å­¦é™¢";
+                return "Ê³Æ·ÓëÖÆÒ©¹¤³ÌÑ§Ôº";
             case 13:
-                return "æ—…æ¸¸ä¸å†å²æ–‡åŒ–å­¦é™¢";
+                return "ÂÃÓÎÓëÀúÊ·ÎÄ»¯Ñ§Ôº";
             case 14:
-                return "éŸ³ä¹å­¦é™¢";
+                return "ÒôÀÖÑ§Ôº";
             case 15:
-                return "ç¾æœ¯å­¦é™¢";
+                return "ÃÀÊõÑ§Ôº";
             case 16:
-                return "ä¸­å¾·è®¾è®¡å­¦é™¢";
+                return "ÖĞµÂÉè¼ÆÑ§Ôº";
             default:
-                return "æœªé€‰æ‹©";
+                return "Î´Ñ¡Ôñ";
         }
     }
     /**
      * @param student
-     * @return æ›´æ–°å­¦ç”ŸåŸºæœ¬ä¿¡æ¯
+     * @return ¸üĞÂÑ§Éú»ù±¾ĞÅÏ¢
      */
     @Transactional
     public Result updateStudentBaseInfo(Student student) {
         if (studentMapper.updateStudentBaseInfo(student) == 0) {
-            logger.error("æ›´æ–°å­¦ç”Ÿä¿¡æ¯å‡ºç°å¤±è´¥ï¼Œå­¦ç”Ÿä¿¡æ¯ï¼š{}", student.toString());
+            logger.error("¸üĞÂÑ§ÉúĞÅÏ¢³öÏÖÊ§°Ü£¬Ñ§ÉúĞÅÏ¢£º{}", student.toString());
             return new Result(Dictionary.FAIL_OPERATION);
         } else {
             return new Result(Dictionary.SUCCESS);
@@ -124,12 +122,12 @@ public class informationHandler {
 
     /**
      * @param student
-     * @return æŠŠå­¦ç”Ÿæ•°æ®æ’å…¥åˆ°æ•°æ®åº“ä¸­
+     * @return °ÑÑ§ÉúÊı¾İ²åÈëµ½Êı¾İ¿âÖĞ
      */
     @Transactional
     public Result insert(Student student) {
         if (studentMapper.insert(student) == 0) {
-            logger.error("æ·»åŠ å­¦ç”Ÿä¿¡æ¯å‡ºç°å¤±è´¥ï¼Œå­¦ç”Ÿä¿¡æ¯ï¼š{}", student.toString());
+            logger.error("Ìí¼ÓÑ§ÉúĞÅÏ¢³öÏÖÊ§°Ü£¬Ñ§ÉúĞÅÏ¢£º{}", student.toString());
             return new Result(Dictionary.FAIL_OPERATION);
         }
         return new Result(Dictionary.SUCCESS);
@@ -139,55 +137,55 @@ public class informationHandler {
     {
         List<Student> informationList =studentMapper.selectAll();
     	/*
-		 * è®¾ç½®è¡¨å¤´ï¼šå¯¹Excelæ¯åˆ—å–å(å¿…é¡»æ ¹æ®ä½ å–çš„æ•°æ®ç¼–å†™)
+		 * ÉèÖÃ±íÍ·£º¶ÔExcelÃ¿ÁĞÈ¡Ãû(±ØĞë¸ù¾İÄãÈ¡µÄÊı¾İ±àĞ´)
 		 */
-        String[] tableHeader = {"åºå·","å­¦å·","å§“å","å­¦é™¢", "ç­çº§","å°ºç "};
+        String[] tableHeader = {"ĞòºÅ","Ñ§ºÅ","ĞÕÃû","Ñ§Ôº", "°à¼¶","³ßÂë"};
     	/*
-		 * ä¸‹é¢çš„éƒ½å¯ä»¥æ‹·è´ä¸ç”¨ç¼–å†™
+		 * ÏÂÃæµÄ¶¼¿ÉÒÔ¿½±´²»ÓÃ±àĞ´
 		 */
-        short  cellNumber = (short) tableHeader.length ;// è¡¨çš„åˆ—æ•°
-        HSSFWorkbook workbook = new  HSSFWorkbook();; // åˆ›å»ºä¸€ä¸ªexcel
-        HSSFCell cell = null; // Excelçš„åˆ—
-        HSSFRow row = null; // Excelçš„è¡Œ
-        HSSFCellStyle style = workbook.createCellStyle(); // è®¾ç½®è¡¨å¤´çš„ç±»å‹
+        short  cellNumber = (short) tableHeader.length ;// ±íµÄÁĞÊı
+        HSSFWorkbook workbook = new HSSFWorkbook();; // ´´½¨Ò»¸öexcel
+        HSSFCell cell = null; // ExcelµÄÁĞ
+        HSSFRow row = null; // ExcelµÄĞĞ
+        HSSFCellStyle style = workbook.createCellStyle(); // ÉèÖÃ±íÍ·µÄÀàĞÍ
         style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-        HSSFCellStyle style1 = workbook.createCellStyle(); // è®¾ç½®æ•°æ®ç±»å‹
+        HSSFCellStyle style1 = workbook.createCellStyle(); // ÉèÖÃÊı¾İÀàĞÍ
         style1.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-        HSSFFont font = workbook.createFont(); // è®¾ç½®å­—ä½“
-        HSSFSheet sheet = workbook.createSheet("sheet1"); // åˆ›å»ºä¸€ä¸ªsheet
-        HSSFHeader header = sheet.getHeader();// è®¾ç½®sheetçš„å¤´
+        HSSFFont font = workbook.createFont(); // ÉèÖÃ×ÖÌå
+        HSSFSheet sheet = workbook.createSheet("sheet1"); // ´´½¨Ò»¸ösheet
+        HSSFHeader header = sheet.getHeader();// ÉèÖÃsheetµÄÍ·
         try {
             /*
-             * æ ¹æ®æ˜¯å¦å–å‡ºæ•°æ®ï¼Œè®¾ç½®headerä¿¡æ¯
+             * ¸ù¾İÊÇ·ñÈ¡³öÊı¾İ£¬ÉèÖÃheaderĞÅÏ¢
              */
             if(informationList.size()<1)
             {
-                header.setCenter("æŸ¥æ— èµ„æ–™");
+                header.setCenter("²éÎŞ×ÊÁÏ");
             }
             else {
-                header.setCenter("å­¦ç”Ÿå°ºç ä¿¡æ¯è¡¨");
+                header.setCenter("Ñ§Éú³ßÂëĞÅÏ¢±í");
                 row = sheet.createRow(0);
                 row.setHeight((short) 400);
                 for (int k = 0; k < cellNumber; k++) {
-                    cell = row.createCell(k);// åˆ›å»ºç¬¬0è¡Œç¬¬kåˆ—
-                    cell.setCellValue(tableHeader[k]);// è®¾ç½®ç¬¬0è¡Œç¬¬kåˆ—çš„å€¼
-                    sheet.setColumnWidth(k, 8000);// è®¾ç½®åˆ—çš„å®½åº¦
-                    font.setColor(HSSFFont.COLOR_NORMAL); // è®¾ç½®å•å…ƒæ ¼å­—ä½“çš„é¢œè‰².
-                    font.setFontHeight((short) 350); // è®¾ç½®å•å…ƒå­—ä½“é«˜åº¦
-                    style1.setFont(font);// è®¾ç½®å­—ä½“é£æ ¼
+                    cell = row.createCell(k);// ´´½¨µÚ0ĞĞµÚkÁĞ
+                    cell.setCellValue(tableHeader[k]);// ÉèÖÃµÚ0ĞĞµÚkÁĞµÄÖµ
+                    sheet.setColumnWidth(k, 8000);// ÉèÖÃÁĞµÄ¿í¶È
+                    font.setColor(HSSFFont.COLOR_NORMAL); // ÉèÖÃµ¥Ôª¸ñ×ÖÌåµÄÑÕÉ«.
+                    font.setFontHeight((short) 350); // ÉèÖÃµ¥Ôª×ÖÌå¸ß¶È
+                    style1.setFont(font);// ÉèÖÃ×ÖÌå·ç¸ñ
                     cell.setCellStyle(style1);
                 }
 
                 int index=0;
-                // ç»™excelå¡«å……æ•°æ®
+                // ¸øexcelÌî³äÊı¾İ
                 for (int i=0;i<informationList.size();i++)
                 {
                     Student information = informationList.get(i);
-                    row = sheet.createRow((short) (i + 1));// åˆ›å»ºç¬¬i+1è¡Œ
-                    row.setHeight((short) 400);// è®¾ç½®è¡Œé«˜
+                    row = sheet.createRow((short) (i + 1));// ´´½¨µÚi+1ĞĞ
+                    row.setHeight((short) 400);// ÉèÖÃĞĞ¸ß
                     cell=row.createCell(0);
                     cell.setCellValue(index++);
-                    cell.setCellStyle(style);// è®¾ç½®é£æ ¼
+                    cell.setCellStyle(style);// ÉèÖÃ·ç¸ñ
 
                     setRow(information,row,style);
                 }
@@ -195,11 +193,11 @@ public class informationHandler {
         } catch (SecurityException | IllegalArgumentException e) {
             e.printStackTrace();
         }
-        // åˆ›å»ºä¸€ä¸ªHttpServletResponseå¯¹è±¡
+        // ´´½¨Ò»¸öHttpServletResponse¶ÔÏó
         FileOutputStream out = null;
-        // åˆ›å»ºä¸€ä¸ªè¾“å‡ºæµå¯¹è±¡
+        // ´´½¨Ò»¸öÊä³öÁ÷¶ÔÏó
         try {
-            // åˆå§‹åŒ–HttpServletResponseå¯¹è±¡
+            // ³õÊ¼»¯HttpServletResponse¶ÔÏó
             out = new FileOutputStream(path);
             workbook.write(out);
             out.flush();
@@ -221,39 +219,39 @@ public class informationHandler {
     private void setRow(Student information, HSSFRow row, HSSFCellStyle style)
     {
         Cell cell;
-        String tmp;//ä¸­é—´å˜é‡
+        String tmp;//ÖĞ¼ä±äÁ¿
         int tmp2;
         if((tmp = information.getStudent_id())!=null)
         {
             cell=row.createCell(1);
             cell.setCellValue(tmp);
-            cell.setCellStyle(style);// è®¾ç½®é£æ ¼
+            cell.setCellStyle(style);// ÉèÖÃ·ç¸ñ
         }
         if((tmp = information.getName())!=null)
         {
             cell=row.createCell(2);
             cell.setCellValue(tmp);
-            cell.setCellStyle(style);// è®¾ç½®é£æ ¼
+            cell.setCellStyle(style);// ÉèÖÃ·ç¸ñ
         }
         if((tmp2 = information.getDepartment()) >= 0)
         {
             cell =row.createCell(3);
-            tmp = switchDeparment(tmp2);//å°†å­¦é™¢ç¼–å·è½¬åŒ–æˆåç§°
+            tmp = switchDeparment(tmp2);//½«Ñ§Ôº±àºÅ×ª»¯³ÉÃû³Æ
             cell.setCellValue(tmp);
-            cell.setCellStyle(style);// è®¾ç½®é£æ ¼
+            cell.setCellStyle(style);// ÉèÖÃ·ç¸ñ
         }
         if((tmp = information.getClass_name())!=null)
         {
             cell =row.createCell(4);
             cell.setCellValue(tmp);
-            cell.setCellStyle(style);// è®¾ç½®é£æ ¼
+            cell.setCellStyle(style);// ÉèÖÃ·ç¸ñ
         }
         if((tmp2 = information.getSsize()) >= 0)
         {
             cell =row.createCell(5);
-            tmp = switchSize(tmp2);//å°†å°ºå¯¸ç¼–å·è½¬æˆç æ•°
+            tmp = switchSize(tmp2);//½«³ß´ç±àºÅ×ª³ÉÂëÊı
             cell.setCellValue(tmp);
-            cell.setCellStyle(style);// è®¾ç½®é£æ ¼
+            cell.setCellStyle(style);// ÉèÖÃ·ç¸ñ
         }
     }
 

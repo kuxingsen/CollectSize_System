@@ -3,7 +3,6 @@ package com.yiban.controller;
 import com.yiban.entity.Dictionary;
 import com.yiban.entity.Result;
 import com.yiban.entity.Student;
-import com.yiban.service.student.informationHandler;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,20 +15,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import com.yiban.service.student.informationHandler;
 
 
 /**
- * <p>Title:å¤„ç†å­¦ç”Ÿä¿¡æ¯çš„controller </p>
+ * <p>Title:´¦ÀíÑ§ÉúĞÅÏ¢µÄcontroller </p>
  * <p>Description: </p>
  *
- * @author éƒ‘è¾¾æˆ
+ * @author Ö£´ï³É
  * @date 2018/7/15 12:37
  */
 @Controller
@@ -46,7 +44,7 @@ public class InformationController {
         return "index";
     }
     /**
-     * @return è¿”å›å­¦ç”Ÿçš„ä¸ªäººä¿¡æ¯--å›æ˜¾ä¿¡æ¯
+     * @return ·µ»ØÑ§ÉúµÄ¸öÈËĞÅÏ¢--»ØÏÔĞÅÏ¢
      */
     @RequestMapping(value = "/studentInfo", method = RequestMethod.GET)
     @ResponseBody
@@ -54,7 +52,7 @@ public class InformationController {
         Student student = null;
         String yiban_id = (String) session.getAttribute("yiban_id");
         if ((student = informationHandler.select(yiban_id)) != null) {
-            String flag = "1";//æ•°æ®åº“æœ‰è¿™ä¸ªå­¦ç”Ÿçš„è®°
+            String flag = "1";//Êı¾İ¿âÓĞÕâ¸öÑ§ÉúµÄ¼Ç
             session.setAttribute("flag",flag);
             return new Result<Student>(Dictionary.SUCCESS,student);
         }
@@ -64,7 +62,7 @@ public class InformationController {
 
     /**
      *
-     * @return æ’å…¥æˆ–æ›´æ–°å­¦ç”Ÿä¿¡æ¯çš„controller
+     * @return ²åÈë»ò¸üĞÂÑ§ÉúĞÅÏ¢µÄcontroller
      */
     @RequestMapping(value = "/submit",method = RequestMethod.POST)
     @ResponseBody
@@ -73,10 +71,10 @@ public class InformationController {
         String yiban_id= (String) session.getAttribute("yiban_id");
         student.setYiban_id(yiban_id);
         String flag= (String) session.getAttribute("flag");
-        //è·å–å­¦ç”Ÿä¿¡æ¯
+        //»ñÈ¡Ñ§ÉúĞÅÏ¢
         if (flag == null || flag.equals("")){
             Result result=informationHandler.insert(student);
-            logger.info("resultçš„å€¼ï¼Œ{}",result.toString());
+            logger.info("resultµÄÖµ£¬{}",result.toString());
             return result;
         }else {
             return informationHandler.updateStudentBaseInfo(student);
@@ -89,7 +87,7 @@ public class InformationController {
     }
 
     /**
-     * å°†æ•°æ®å¯¼å‡ºä¸ºexcelï¼Œéœ€è¦æé‘«è´¦å·æ‰èƒ½å¯¼å‡º
+     * ½«Êı¾İµ¼³öÎªexcel£¬ĞèÒªÀîöÎÕËºÅ²ÅÄÜµ¼³ö
      * @param request
      * @param session
      * @return
@@ -103,7 +101,7 @@ public class InformationController {
         }
 
         String path = request.getSession().getServletContext().getRealPath("/temp/");
-        String filePath = "å­¦ç”Ÿå°ºç ä¿¡æ¯è¡¨" + System.currentTimeMillis() + ".xls";
+        String filePath = "Ñ§Éú³ßÂëĞÅÏ¢±í" + System.currentTimeMillis() + ".xls";
 
         File downFile = new File(path, filePath);
 
@@ -118,22 +116,22 @@ public class InformationController {
 
             HttpHeaders headers = new HttpHeaders();
 
-            //ä¸‹è½½æ˜¾ç¤ºçš„æ–‡ä»¶åï¼Œè§£å†³ä¸­æ–‡åç§°ä¹±ç é—®é¢˜
+            //ÏÂÔØÏÔÊ¾µÄÎÄ¼şÃû£¬½â¾öÖĞÎÄÃû³ÆÂÒÂëÎÊÌâ
 
             /*String downloadFielName = new String(filePath.substring(filePath.lastIndexOf("//"),filePath.length()).getBytes("UTF-8"),
                     "iso-8859-1");*/
 
-            //é€šçŸ¥æµè§ˆå™¨ä»¥attachmentï¼ˆä¸‹è½½æ–¹å¼ï¼‰
+            //Í¨Öªä¯ÀÀÆ÷ÒÔattachment£¨ÏÂÔØ·½Ê½£©
             headers.setContentDispositionFormData("attachment", filePath);
 
-            //application/octet-stream ï¼š äºŒè¿›åˆ¶æµæ•°æ®ï¼ˆæœ€å¸¸è§çš„æ–‡ä»¶ä¸‹è½½ï¼‰ã€‚
+            //application/octet-stream £º ¶ş½øÖÆÁ÷Êı¾İ£¨×î³£¼ûµÄÎÄ¼şÏÂÔØ£©¡£
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
 
 //            return new ResponseEntity <byte[]>(FileUtils.readFileToByteArray(file),
 //                    headers, HttpStatus.CREATED);
             /**
-             * è§£å†³IEä¸èƒ½ä¸‹è½½æ–‡ä»¶é—®é¢˜
+             * ½â¾öIE²»ÄÜÏÂÔØÎÄ¼şÎÊÌâ
              */
             return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
                     headers, HttpStatus.OK);
